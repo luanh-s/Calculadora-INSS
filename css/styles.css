@@ -3,18 +3,18 @@ body {
 }
 @font-face {
     font-family: "myfont-light";
-    src: url("/fonts/currencies-regular.woff2") format('woff2');
+    src: url("../fonts/currencies-regular.woff2") format('woff2');
     font-weight: 500;
 }
 
 @font-face {
     font-family: "myfont-light";
-    src: url("/fonts/currencies-light.woff2") format('woff2');
+    src: url("../fonts/currencies-light.woff2") format('woff2');
 }
 
 @font-face {
     font-family: "myfont-light";
-    src: url("/fonts/currencies-lighter.woff2") format('woff2');
+    src: url("../fonts/currencies-lighter.woff2") format('woff2');
     font-weight: 300;
 }
 .header{
