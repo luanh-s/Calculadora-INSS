@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Calculadora de INSS</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <style>
+        body {
+            font-family: "myfont-light", serif;
+        }
+        @font-face {
+            font-family: "myfont-light";
+            src: url("../fonts/currencies-regular.woff2") format('woff');
+            font-weight: 500;
+        }
+
+        @font-face {
+            font-family: "myfont-light";
+            src: url("../fonts/currencies-light.woff2") format('woff');
+        }
+
+        @font-face {
+            font-family: "myfont-light";
+            src: url("../fonts/currencies-lighter.woff2") format('woff');
+            font-weight: 300;
+        }
+        .header{
+            height: 60px;
+            width: 100%;
+            display:flex;
+            background-color: rgba(0,0,0,0.2);
+            font-size: x-large;
+        }
+        .inss{
+            display: flex;
+            text-align: right;
+            padding: 5px;
+            padding-right: 20px;
+            float: right;
+            line-height: 50px;
+            margin-left: auto;
+        }
+        .acessos{
+            padding:5px;
+            padding-right: 20px;
+            display:flex;
+            line-height: 50px
+        }
+        .container{
+            padding: 25px;
+        }
+        .footer{
+            height: 60px;
+            width: 100%;
+            background-color: rgba(0,0,0,0.2);
+            position: absolute;
+            left:0;
+            bottom: 0;
+        }
+        .btn-success{
+            border-top-right-radius: 5px !important;
+            border-bottom-right-radius: 5px !important;
+        }
+
+    </style>
+</head>
+<body>
+    
+    <div class="header">
+        <div class="inss">INSS's Calculados: <div id="valinss"></div></div>
+        <div class="acessos">Acessos: <div id="valacessos"></div></div>
+    </div>
+    <div class="container">
+        <h1 style="font-weight: 300">Calculadora de INNS atualizada para 2020</h1>
+        <div class="row">
+            <div class="col-sm">
+                <h6>Insira o valor em Reais:</h6>
+                <div class="input-group mb-3">
+                    <input type="number" step=".01" class="form-control" id="inputcalcular" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
+                    <div class="input-group-prepend">
+                        <button class="btn btn-success" type="button" id="botaocalcular">Calcular</button>
+                    </div>
+                </div>
+                <table class="table table-hover">
+                    <thead>
+                        <tr >
+                        <th scope="col">Faixa</th>
+                        <th scope="col">Aliquota</th>
+                        <th scope="col">Salário de Contribuição</th>
+                        <th scope="col">Valor do INSS</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">1°</th>
+                            <th scope="row">7.5%</th>
+                            <td id="contribfaixa1">R$ 0.00</td>
+                            <td id="valorfaixa1">R$ 0.00</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2°</th>
+                            <th scope="row">9%</th>
+                            <td id="contribfaixa2">R$ 0.00</td>
+                            <td id="valorfaixa2">R$ 0.00</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">3°</th>
+                            <th scope="row">12%</th>
+                            <td id="contribfaixa3">R$ 0.00</td>
+                            <td id="valorfaixa3">R$ 0.00</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">4°</th>
+                            <th scope="row">14%</th>
+                            <td id="contribfaixa4">R$ 0.00</td>
+                            <td id="valorfaixa4">R$ 0.00</td>
+                        </tr>
+                        <tr class="table-active">
+                            <th scope="row" colspan="2">Total:</th>
+                            <!-- <th scope="row">14%</th> -->
+                            <!-- <td>R$ 0.00</td> -->
+                            <th scope="row" id="valorconttotal">R$ 0.00</th>
+                            <th scope="row" id="valortotal">R$ 0.00</th>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <p>[1] Simulador desenvolvido com base na Portaria 3.659/2020, onde os fatos geradores valem à partir de Mar/2020</p>
+                <p>[2] Este simulador serve somente de base para o calculo do INSS, e não possui nenhum efeito legal.</p>
+                <p><a rel="stylesheet" href="https://www.contabeis.com.br/artigos/5917/calculo-do-inss-como-realizar-e-compreender-a-operacao-a-partir-de-marco-2020/">
+                    [3] Link base para o desenvolvimento deste simulador.
+                </a></p>
+                <p>[4] Desenvolvedor do simulador: 
+                <a rel="stylesheet" href="https://www.linkedin.com/in/luanhsirtoli/">
+                    Luan Henrique Sirtoli (LinkedIn).
+                </a></p>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    
+    <!-- LINKS PARA ADICIONAR A FIREBASE -->
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.9.1/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#config-web-app -->
+
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/7.9.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.9.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.9.1/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.9.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/ui/4.0.0/firebase-ui-auth__pt_br.js"></script>
+
+    <script src="js/js.js"></script>
+
+    <!-- <script>
+        
+    </script> -->
+</body>
+</html>
